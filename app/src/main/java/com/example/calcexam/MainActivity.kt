@@ -18,5 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         AddClickListener().add(tableRowList, binding.mainNumberText, binding.mainResultText)
+
     }
 }

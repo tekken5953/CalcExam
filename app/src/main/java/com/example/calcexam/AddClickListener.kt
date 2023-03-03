@@ -67,10 +67,24 @@ class AddClickListener {
                                     signArray.clear()
                                     resultTv.text = "0"
                                 }
+
+                                4 -> {
+                                    count = 0
+                                    if (numberArray.isNotEmpty() &&
+                                        resultTv.text.length > numberArray.last().length) {
+                                        numberArray.removeAt(numberArray.lastIndex)
+                                        signArray.removeAt(signArray.lastIndex)
+                                        resultTv.text = resultTv.text.substring(0,resultTv.length()-numberArray.last().length-1)
+                                    } else {
+                                        resultTv.text = "0"
+                                        numberArray.clear()
+                                        signArray.clear()
+                                    }
+                                }
                             }
                         }
                     } catch (e: ClassCastException) {
-                        if (resultTv.length() != 0) {
+                        if (resultTv.length() != 0 && resultTv.text != "0") {
                             when (checksum(resultTv.text.last().toString())) {
                                 0 -> {
                                     resultTv.text =
@@ -106,9 +120,16 @@ class AddClickListener {
             "C" -> {
                 3
             }
+            "CE" -> {
+                4
+            }
             else -> {
                 -1
             }
         }
+    }
+
+    private fun convertSign(s: String) {
+
     }
 }
